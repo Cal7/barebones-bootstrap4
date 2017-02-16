@@ -1,7 +1,15 @@
 <ul class="navbar-nav mr-auto">
     {% for item in menu %}
-        <li class="nav-item">
-            <a class="nav-link" href="{{ item.link }}">{{ item.label }}</a>
+        <li class="nav-item {{ item.submenu is defined ? 'dropdown' }}">
+            <a class="nav-link {{ item.submenu is defined ? 'dropdown-toggle' }}" href="{{ item.link }}" {{ item.submenu is defined ? 'data-toggle="dropdown"' }}>{{ item.label }}</a>
+
+            {% if item.submenu is defined %}
+                <div class="dropdown-menu">
+                    {% for subitem in item.submenu %}
+                        <a class="dropdown-item" href="{{ subitem.link }}">{{ subitem.label }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </li>
     {% endfor %}
 </ul>
