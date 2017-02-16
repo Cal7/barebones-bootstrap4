@@ -1,0 +1,6 @@
+#Widths are defined in terms of Bootstrap's grid system, i.e. 12 represents full width, 6 half width, etc.
+layout:
+  main:
+    width: 9
+  aside:
+    width: 3

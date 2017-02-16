@@ -5,9 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css', 'theme') }}" />
+        <link rel="stylesheet" href="{{ asset('css/app.css', 'theme') }}" />
     </head>
     <body>
         {% include 'partials/_header.twig' %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-{{ theme.layout.main.width }} {{ not theme.layout.aside is defined ? 'col-centered'}}">
+                    {% block main %}
+                    {% endblock %}
+                </div>
+
+                {% if theme.layout.aside is defined %}
+                    <div class="col-md-{{ theme.layout.aside.width }}">
+                        {% include 'partials/_aside.twig' %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
 
         {% include 'partials/_footer.twig' %}
 

@@ -1,0 +1,5 @@
+/*Centers a lone column within a row*/
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
