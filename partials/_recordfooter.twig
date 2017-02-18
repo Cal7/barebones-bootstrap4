@@ -1,0 +1,39 @@
+{% if record.editlink() %}
+    <p><a href="{{ record.editlink() }}">Edit this entry</a></p>
+{% endif %}
+
+<p>
+    {{ __('general.phrase.written-by-on', {
+        '%name%': record.user.displayname|default(__('Unknown')),
+        '%date%': record.datepublish|localedatetime("%A %B %e, %Y")
+    }) }}
+</p>
+
+{% if extended|default() %}
+    <p>{% include '_sub_taxonomylinks.twig' %}</p>
+
+    {% set previous = record.previous() %}
+    {% set next = record.next() %}
+    {% if previous or next %}
+        {% if previous %}
+            <a href="{{ previous.link }}">&laquo; {{ previous.title }}</a>
+        {% endif %}
+        {% if previous and next %}
+            —
+        {% endif %}
+        {% if next %}
+            <a href="{{ next.link }}">{{ next.title }} &raquo;</a>
+        {% endif %}
+    {% endif %}
+
+    {% set relatedrecords = record.related() %}
+    {% if relatedrecords is not empty %}
+        <p>{{ __('general.phrase.related-content') }}
+            <ul>
+                {% for related in relatedrecords %}
+                    <li><a href="{{ related.link }}">{{ related.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </p>
+    {% endif %}
+{% endif %}
