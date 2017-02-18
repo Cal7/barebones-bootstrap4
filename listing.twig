@@ -1,0 +1,33 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    {% if taxonomytype is defined %}
+        <h1>{{ __('general.phrase.overview-for') }} {{ taxonomy.options[slug]|default(slug) }}</h1>
+    {% endif %}
+
+    {% if not taxonomy.has_sortorder %}
+        {% set records = records|order(app.config.get('general/listing_sort')) %}
+    {% endif %}
+
+    {% for record in records %}
+        <article>
+            <h2><a href="{{ record.link }}">{{ record.title }}</a></h2>
+
+            {% if record.image %}
+                <img src="{{ image(record.image) }}" />
+            {% endif %}
+
+            <p>{{ record.excerpt(500) }}</p>
+
+            {% include 'partials/_recordfooter.twig' %}
+        </article>
+
+        {% if not loop.last %}
+            <hr />
+        {% endif %}
+    {% else %}
+        <h2>{{ __('general.phrase.no-content-found') }}</h2>
+
+        <p>Unfortunately, no content could be found.</p>
+    {% endfor %}
+{% endblock %}
