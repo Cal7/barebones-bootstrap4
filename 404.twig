@@ -1,0 +1,11 @@
+{% extends 'partials/_master.twig' %}
+
+{% setcontent record = 'blocks/404-not-found' %}
+
+{% block main %}
+    <h1>{{ record.title|default('404 not found') }}</h1>
+
+    {% if fields(record) %}
+        {{ fields(record) }}
+    {% endif %}
+{% endblock %}

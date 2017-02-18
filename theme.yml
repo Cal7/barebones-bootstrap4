@@ -4,3 +4,5 @@ layout:
     width: 9
   aside:
     width: 3
+
+notfound: 404.twig
