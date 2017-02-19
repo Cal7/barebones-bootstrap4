@@ -10,7 +10,7 @@
             {{ menu(template='partials/_sub_menu.twig') }}
 
             <form method="get" action="{{ path('search') }}" class="form-inline">
-                <input class="form-control" type="text" placeholder="Search">
+                <input type="text" name="search" class="form-control" placeholder="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

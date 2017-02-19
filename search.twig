@@ -1,0 +1,47 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+    <h1>
+        {% if search is not empty %}
+            {{ __('general.phrase.search-results-for-variable', { '%search%': search }) }}
+        {% else %}
+            {{ __('general.phrase.search') }}
+        {% endif %}
+    </h1>
+
+    <form method="get" action="{{ path('search') }}">
+        <div class="form-group">
+            <label for="search">Search query</label>
+            <input type="text" name="search" id="search" class="form-control" value="{{ search|default() }}" placeholder="Search" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    {% for record in records %}
+        <article>
+            <h2><a href="{{ record.link }}">{{ record.title }}</a></h2>
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p>{{ record.excerpt(300) }}</p>
+                    </div>
+                    <div class="col-md-4">
+                        {% if record.image %}
+                            <img src="{{ image(record.image) }}" class="img-fluid" />
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        {% if not loop.last %}
+            <hr />
+        {% endif %}
+    {% else %}
+        <p>{{ __('general.phrase.no-result-for-search-term', { '%SEARCHTERM%': search|escape }) }}</p>
+    {% endfor %}
+
+    {{ pager(template='partials/_sub_pager.twig') }}
+{% endblock %}
