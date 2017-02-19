@@ -1,0 +1,35 @@
+{% set link = pager.makelink() %}
+
+{% if pager.totalpages > 1 %}
+    <nav>
+        <ul class="pagination">
+            {% if pager.current > 1 %}
+                <li class="page-item"><a href="{{ link }}{{ pager.current - 1 }}" class="page-link">Previous</a></li>
+            {% endif %}
+
+            {% if pager.current - surr > 1 %}
+                <li class="page-item"><a href="{{ link }}1" class="page-link">1</a></li>
+            {% endif %}
+
+            {% if pager.current - surr > 2 %}
+                <li class="page-item disabled"><a class="page-link">...</a></li>
+            {% endif %}
+
+            {% for i in max(1, pager.current - surr)..min(pager.current + surr, pager.totalpages) %}
+                <li class="page-item {{ i == pager.current ? 'active' }}"><a href="{{ link }}{{ i }}" class="page-link">{{ i }}</a></li>
+            {% endfor %}
+
+            {% if pager.current + surr < pager.totalpages - 1 %}
+                <li class="page-item disabled"><a class="page-link">...</a></li>
+            {% endif %}
+
+            {% if pager.current + surr < pager.totalpages %}
+                <li class="page-item"><a href="{{ link }}{{ pager.totalpages }}" class="page-link">{{ pager.totalpages }}</a></li>
+            {% endif %}
+
+            {% if pager.current < pager.totalpages %}
+                <li class="page-item"><a href="{{ link }}{{ pager.current + 1 }}" class="page-link">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endif %}
