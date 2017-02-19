@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a class="navbar-brand" href="#">{{ app.config.get('general/sitename') }}</a>
+        <a class="navbar-brand" href="{{ path('homepage') }}">{{ app.config.get('general/sitename') }}</a>
 
         <div class="collapse navbar-collapse" id="navbar">
             {{ menu(template='partials/_sub_menu.twig') }}
