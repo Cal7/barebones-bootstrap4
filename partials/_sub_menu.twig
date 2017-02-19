@@ -5,6 +5,10 @@
 
             {% if item.submenu is defined %}
                 <div class="dropdown-menu">
+                    {# Because the link on a Bootstrap dropdown menu is not clickable, we need to repeat the link in the dropdown #}
+                    <a class="dropdown-item" href="{{ item.link }}">{{ item.label }}</a>
+                    <div class="dropdown-divider"></div>
+
                     {% for subitem in item.submenu %}
                         <a class="dropdown-item" href="{{ subitem.link }}">{{ subitem.label }}</a>
                     {% endfor %}
