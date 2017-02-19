@@ -3,7 +3,7 @@
 {% block main %}
     <h1>{{ record.title }}</h1>
     
-    {{ fields() }}
+    {{ fields(record=record, template='partials/_sub_fields.twig') }}
 
     {% include 'partials/_recordfooter.twig' with {'extended': true} %}
 {% endblock main %}

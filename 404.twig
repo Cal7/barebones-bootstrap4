@@ -5,7 +5,7 @@
 {% block main %}
     <h1>{{ record.title|default('404 not found') }}</h1>
 
-    {% if fields(record) %}
-        {{ fields(record) }}
+    {% if fields(record=record) %}
+        {{ fields(record=record, template='partials/_sub_fields.twig') }}
     {% endif %}
 {% endblock %}
