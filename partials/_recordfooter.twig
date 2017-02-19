@@ -10,7 +10,7 @@
 </p>
 
 {% if extended|default() %}
-    <p>{% include '_sub_taxonomylinks.twig' %}</p>
+    <p>{% include '_sub_taxonomylinks.twig' with {'record': record} %}</p>
 
     {% set previous = record.previous() %}
     {% set next = record.next() %}

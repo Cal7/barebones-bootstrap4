@@ -5,5 +5,5 @@
     
     {{ fields(record=record, template='partials/_sub_fields.twig') }}
 
-    {% include 'partials/_recordfooter.twig' with {'extended': true} %}
+    {% include 'partials/_recordfooter.twig' with {'record': record, 'extended': true} %}
 {% endblock main %}

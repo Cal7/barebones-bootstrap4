@@ -19,7 +19,7 @@
 
             <p>{{ record.excerpt(500) }}</p>
 
-            {% include 'partials/_recordfooter.twig' %}
+            {% include 'partials/_recordfooter.twig' with {'record': record} %}
         </article>
 
         {% if not loop.last %}
