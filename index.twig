@@ -1,9 +1,17 @@
 {% extends 'partials/_master.twig' %}
 
 {% block main %}
-    <h1>Lorem ipsum</h1>
+    {% if record is defined %}
+        <h1>{{ record.title }}</h1>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor ornare neque, eu dictum nunc. Pellentesque id placerat tellus, eu tempor felis. Cras sed posuere turpis. Etiam pulvinar in lacus ac accumsan. Phasellus sodales interdum rhoncus. Sed sodales sem vitae nunc mollis imperdiet. Morbi congue blandit laoreet. Fusce scelerisque turpis sit amet nibh porta, nec lobortis nunc semper. Aenean ut felis magna. Mauris in ligula ex. Aenean porttitor elit nibh, sed sagittis leo volutpat quis. Duis eget tempor lacus. Praesent sagittis enim vel pulvinar laoreet. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+        {{ record.teaser }}
 
-    <p>Vestibulum sed nibh efficitur, maximus magna ut, lobortis ante. Maecenas finibus metus ut ex tincidunt, at dignissim ante eleifend. Praesent vulputate est in enim feugiat, ut varius metus faucibus. Donec leo mi, porta ac placerat ut, feugiat in quam. Sed tincidunt, dui eget scelerisque rhoncus, ligula nulla fringilla sapien, at iaculis ante erat at risus. Aenean ut congue arcu. Pellentesque quis erat nisi. Suspendisse quis vulputate elit. Praesent rhoncus dui sit amet felis lobortis, et aliquam tellus condimentum.</p>
+        {% if record.image is defined %}
+            <img src="{{ image(record.image) }}" class="img-fluid" />
+        {% endif %}
+
+        {{ record.body }}
+
+        {% include 'partials/_recordfooter.twig' with {'record': record} %}
+    {% endif %}
 {% endblock %}
