@@ -6,6 +6,16 @@
 
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css', 'theme') }}" />
         <link rel="stylesheet" href="{{ asset('css/app.css', 'theme') }}" />
+
+        <title>
+            {% if record.title is defined %}
+                {{ record.title|striptags }} |
+            {% endif %}
+            {{ app.config.get('general/sitename') }}
+            {% if record.title is not defined %}
+                | {{ app.config.get('general/payoff') }}
+            {% endif %}
+        </title>
     </head>
     <body>
         {% include 'partials/_header.twig' %}
