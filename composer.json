@@ -1,0 +1,15 @@
+{
+  "name": "cal7/barebones-bootstrap4",
+  "description": "A barebones theme for the Bolt CMS using Bootstrap 4",
+  "type": "bolt-theme",
+  "require": {
+    "bolt/bolt": "^3.0"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/cal7/barebones-bootstrap4",
+  "authors": [
+    {
+      "name": "Callum Browne"
+    }
+  ]
+}
