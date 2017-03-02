@@ -73,7 +73,7 @@
         {% endif %}
 
         {# Image fields #}
-        {% if fieldtype == "image" %}
+        {% if fieldtype == "image" and value.file is defined %}
             <img src="{{ image(value.file) }}" class="img-fluid" />
         {% endif %}
 
